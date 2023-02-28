@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" id="ht">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+            text-align: center;
+
+        }
+    </style>
+</head>
+
+<body id="bd">
+    <h1 class="heading">Welcome to My Time</h1>
+    <select id="color" onclick="colorfun()">
+        <option selected id="light">Light</option>
+        <option id="Dark">Dark</option>
+    </select><br>
+    <h1><span id="hrs">Hours </span> : <span id="min"> Minutes</span> : <span id="sec">Seconds</span><span
+            id="ampm">AM</span></h1>
+    <h2><span id="day">Day</span></h2>
+</body>
+<script text="text/javascript">
+    window.onload = fun();
+
+    function fun() {
+
+        let date = new Date()
+        let hour = date.getHours();
+        let min = date.getMinutes();
+        let sec = date.getSeconds();
+        let ampm = "Am";
+        let day = date.getDay();
+        console.log(day);
+        let arr = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+        day = arr[day-1];
+        console.log(day);
+        if (hour < 10) {
+            hour = "0" + String(hour);
+        }
+        if (min < 10) {
+            min = "0" + String(min);
+        }
+        if (sec < 10) {
+            sec = "0" + String(sec);
+        }
+        if (hour >= 12) {
+            ampm = "PM";
+        }
+        if (ampm === "PM") {
+            if (hour >= 12) {
+                hour = "0" + String(hour - 12);
+            }
+        }
+        h = document.getElementById("hrs");
+        h.innerText = hour;
+        h.style.fontSize = "40px";
+        m = document.getElementById("min");
+        m.innerText = min;
+        m.style.fontSize = "40px";
+        s = document.getElementById("sec");
+        s.innerText = sec;
+        s.style.fontSize = "80px";
+        ap = document.getElementById("ampm");
+        ap.innerText = ampm;
+        d = document.getElementById("day");
+        d.innerText = day;
+
+        console.log(hour, min, sec);
+    }
+    let c = setInterval(fun, 1000);
+
+    function out(){
+        let j = document.getElementById("sec");
+        console.log(j);
+        j.style.fontSize = "60px";
+    }
+    //let d = setInterval(out,1000);
+
+    function colorfun() {
+        let col = document.getElementById("color");
+        console.log(color.value);
+        let ht = document.getElementById("ht")
+        if (col.value === "Light") {
+            ht.style.color = "black";
+            ht.style.backgroundColor = "whitesmoke";
+        }
+
+        if (col.value === "Dark") {
+            ht.style.color = "white";
+            ht.style.backgroundColor = "black";
+        }
+    }
+</script>
+
+</html>
